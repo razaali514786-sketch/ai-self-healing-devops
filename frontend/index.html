@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Self-Healing DevOps Platform</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-mark">SH</span><div><strong>Self-Healing</strong><small>DEVOPS PLATFORM</small></div></div>
+    <nav>
+      <a class="active" href="#overview">Overview</a>
+      <a href="#incidents">Incidents</a>
+      <a href="#recovery">Recovery History</a>
+    </nav>
+    <div class="sidebar-note"><span class="pulse"></span> Local development mode</div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div><p class="eyebrow">OPERATIONS CENTER</p><h1>Platform Overview</h1><p class="muted">Detect. Analyze. Decide. Recover. Verify. Notify.</p></div>
+      <button id="refreshBtn" class="button secondary">Refresh status</button>
+    </header>
+
+    <section class="status-banner">
+      <div><span class="status-dot"></span><strong id="apiStatus">Checking backend...</strong><p id="apiMessage">Connecting to the local API.</p></div>
+      <span class="pill">POLICY-CONTROLLED</span>
+    </section>
+
+    <section class="metrics-grid" aria-label="Platform metrics">
+      <article class="metric-card"><p>Total incidents</p><strong id="totalIncidents">—</strong><span>Recorded by API</span></article>
+      <article class="metric-card"><p>Open incidents</p><strong id="openIncidents">—</strong><span>Awaiting resolution</span></article>
+      <article class="metric-card"><p>Recoveries</p><strong id="recoveries">—</strong><span>Successful demo actions</span></article>
+      <article class="metric-card"><p>Platform mode</p><strong class="mode">SAFE</strong><span>No unrestricted AI access</span></article>
+    </section>
+
+    <section class="content-grid">
+      <article class="panel" id="incidents">
+        <div class="panel-heading"><div><p class="eyebrow">OBSERVABILITY</p><h2>Recent incidents</h2></div><button id="loadIncidentsBtn" class="button secondary">Load incidents</button></div>
+        <div class="table-wrap"><table><thead><tr><th>ID</th><th>Incident</th><th>Severity</th><th>Status</th><th>Action</th></tr></thead><tbody id="incidentRows"><tr><td colspan="5" class="empty">Loading incidents...</td></tr></tbody></table></div>
+      </article>
+      <article class="panel" id="recovery">
+        <div class="panel-heading"><div><p class="eyebrow">CONTROLLED AUTOMATION</p><h2>Recovery console</h2></div></div>
+        <p class="muted">Choose a demo incident and request a predefined action. This starter version records a simulated recovery; it does not change real infrastructure.</p>
+        <label for="incidentSelect">Incident</label>
+        <select id="incidentSelect"><option value="">Loading incidents...</option></select>
+        <label for="actionSelect">Approved demo action</label>
+        <select id="actionSelect">
+          <option value="restart_pod">Restart pod (simulated)</option>
+          <option value="scale_workload">Scale workload (simulated)</option>
+          <option value="rollback_deployment">Rollback deployment (simulated)</option>
+        </select>
+        <button id="recoverBtn" class="button primary">Validate &amp; request recovery</button>
+        <p id="recoveryMessage" class="feedback" role="status">Recovery actions are simulated in this starter build.</p>
+        <div class="history-box"><strong>Safety boundary</strong><p>Only actions listed by the backend policy are accepted. AI suggestions will not directly execute infrastructure changes.</p></div>
+      </article>
+    </section>
+    <footer>FYP prototype · Frontend connected to FastAPI · Real Kubernetes integration comes in a later phase</footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
